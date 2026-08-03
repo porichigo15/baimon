@@ -4,9 +4,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const items = [
-  { href: "/split-half", label: "คนละครึ่ง" },
-  { href: "/thai-help", label: "ไทยช่วยไทย" },
   { href: "/party", label: "หารกัน" },
+  { href: "/thai-help", label: "ไทยช่วยไทย" },
+  { href: "/split-half", label: "คนละครึ่ง" },
 ];
 
 export function Nav() {

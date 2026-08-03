@@ -94,7 +94,7 @@ export default function ThaiHelpPage() {
             className="calculate-btn-gradient flex w-full items-center justify-center gap-2 rounded-lg py-4 font-bold text-on-primary transition-all hover:brightness-110 active:scale-[0.98]"
           >
             <span className="material-symbols-outlined" aria-hidden="true">calculate</span>
-            คำนวณและบันทึกสิทธิ์
+            คำนวณ
           </button>
         </form>
 

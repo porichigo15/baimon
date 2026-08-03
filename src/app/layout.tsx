@@ -4,6 +4,7 @@ import Link from "next/link";
 import Script from "next/script";
 import { Nav } from "../components/Nav";
 import { CookieConsent } from "../components/CookieConsent";
+import { MobileMenu } from "../components/MobileMenu";
 import { AD_CLIENT_ID } from "../lib/config";
 import "./globals.css";
 
@@ -17,6 +18,9 @@ export const metadata: Metadata = {
   title: "Baimon (ใบหม่อน)",
   description: "คำนวณคนละครึ่ง ไทยช่วยไทย 60/40 และหารเงินกันเอง",
   themeColor: "#ffffff",
+  other: {
+    "google-adsense-account": AD_CLIENT_ID,
+  },
 };
 
 export default function RootLayout({
@@ -40,6 +44,7 @@ export default function RootLayout({
         <header className="sticky top-0 z-50 border-b border-outline-variant/40 bg-surface/80 backdrop-blur-md">
           <div className="mx-auto flex h-16 w-full max-w-300 items-center justify-between px-5 md:px-10">
             <div className="flex items-center gap-3">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="/images/logo.png" alt="Baimon Logo" className="h-10 w-10" />
               <Link
                 href="/"
@@ -49,13 +54,7 @@ export default function RootLayout({
               </Link>
             </div>
             <Nav />
-            <button
-              type="button"
-              className="md:hidden"
-              aria-label="เมนู"
-            >
-              <span className="material-symbols-outlined text-on-surface">menu</span>
-            </button>
+            <MobileMenu />
           </div>
         </header>
         <main className="flex-1">{children}</main>

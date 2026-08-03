@@ -25,7 +25,7 @@ export function DiscountInput({
           aria-label="ประเภทส่วนลด"
           className="rounded-lg border border-outline-variant/30 bg-surface-container-high p-4 text-on-surface outline-none transition-all focus:ring-1 focus:ring-primary/50"
         >
-          <option value="percent">เปอร์เซ็นต์ (%)</option>
+          <option value="percent">%</option>
           <option value="baht">บาท</option>
         </select>
         <input
@@ -37,7 +37,7 @@ export function DiscountInput({
           onChange={(event) => onValueChange(event.target.value)}
           aria-label="ส่วนลด"
           placeholder={type === "percent" ? "เช่น 10" : "เช่น 50"}
-          className="rounded-lg border border-outline-variant/30 bg-surface-container-high p-4 text-on-surface outline-none placeholder:text-on-surface-variant/30 transition-all focus:ring-1 focus:ring-primary/50"
+          className="w-full rounded-lg border border-outline-variant/30 bg-surface-container-high p-4 text-on-surface outline-none placeholder:text-on-surface-variant/30 transition-all focus:ring-1 focus:ring-primary/50"
         />
       </div>
     </div>

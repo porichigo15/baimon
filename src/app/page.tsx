@@ -8,10 +8,10 @@ export const metadata: Metadata = {
 
 const tools = [
   {
-    href: "/split-half",
-    title: "คำนวณคนละครึ่ง",
-    description: "แบ่งเงินเท่ากัน 2 คน ใครจ่ายคนละครึ่งพอดี ระบบจัดการให้ลงตัวทุกยอด",
-    image: "/images/split-half.png",
+    href: "/party",
+    title: "หารกัน",
+    description: "หารเงินกันเองให้เท่าๆ กันทุกคน เหมาะสำหรับกลุ่มเพื่อนหรือมื้อค่ำสุดพิเศษ",
+    image: "/images/party.png",
   },
   {
     href: "/thai-help",
@@ -20,10 +20,10 @@ const tools = [
     image: "/images/thai-help.png",
   },
   {
-    href: "/party",
-    title: "หารกัน",
-    description: "หารเงินกันเองให้เท่าๆ กันทุกคน เหมาะสำหรับกลุ่มเพื่อนหรือมื้อค่ำสุดพิเศษ",
-    image: "/images/party.png",
+    href: "/split-half",
+    title: "คำนวณคนละครึ่ง",
+    description: "รัฐช่วยจ่าย 50% สูงสุด 200 บาท/วัน ที่เหลือจ่ายเองอย่างโปร่งใส",
+    image: "/images/split-half.png",
   },
 ];
 
