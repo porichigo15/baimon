@@ -27,7 +27,6 @@ describe("MobileMenu", () => {
       "คนละครึ่ง",
       "ไทยช่วยไทย",
       "หารกัน",
-      "นโยบายความเป็นส่วนตัว",
     ]) {
       expect(screen.getByRole("link", { name: label })).toBeInTheDocument();
     }

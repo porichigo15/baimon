@@ -16,7 +16,7 @@ describe("ThaiHelpPage", () => {
     render(<ThaiHelpPage />);
 
     await user.type(screen.getByLabelText("ยอดเงินที่จ่าย (บาท)"), "500");
-    await user.click(screen.getByRole("button", { name: "คำนวณและบันทึกสิทธิ์" }));
+    await user.click(screen.getByRole("button", { name: "คำนวณ" }));
 
     expect(screen.getByText("฿200.00")).toBeInTheDocument();
     expect(screen.getByText("฿300.00")).toBeInTheDocument();
@@ -28,7 +28,7 @@ describe("ThaiHelpPage", () => {
 
     await user.type(screen.getByLabelText("ยอดเงินที่จ่าย (บาท)"), "500");
     await user.type(screen.getByLabelText("ส่วนลด"), "10");
-    await user.click(screen.getByRole("button", { name: "คำนวณและบันทึกสิทธิ์" }));
+    await user.click(screen.getByRole("button", { name: "คำนวณ" }));
 
     expect(screen.getByText("ยอดหลังหักส่วนลด")).toBeInTheDocument();
     expect(screen.getByText("฿450.00")).toBeInTheDocument();
@@ -41,7 +41,7 @@ describe("ThaiHelpPage", () => {
 
     await user.type(screen.getByLabelText("ยอดเงินที่จ่าย (บาท)"), "500");
     await user.type(screen.getByLabelText("ส่วนลด"), "90");
-    await user.click(screen.getByRole("button", { name: "คำนวณและบันทึกสิทธิ์" }));
+    await user.click(screen.getByRole("button", { name: "คำนวณ" }));
 
     expect(screen.getByText("฿30.00")).toBeInTheDocument();
     expect(screen.getByText("฿20.00")).toBeInTheDocument();
@@ -52,7 +52,7 @@ describe("ThaiHelpPage", () => {
     render(<ThaiHelpPage />);
 
     await user.type(screen.getByLabelText("ยอดเงินที่จ่าย (บาท)"), "100");
-    await user.click(screen.getByRole("button", { name: "คำนวณและบันทึกสิทธิ์" }));
+    await user.click(screen.getByRole("button", { name: "คำนวณ" }));
 
     expect(screen.getByText("฿60.00")).toBeInTheDocument();
     expect(screen.getByText("฿40.00")).toBeInTheDocument();
