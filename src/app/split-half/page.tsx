@@ -3,67 +3,100 @@
 import { useState } from "react";
 import type { FormEvent } from "react";
 import { splitHalf } from "../../calc/splitHalf";
+import { applyDiscount, type DiscountType } from "../../calc/discount";
 import { formatBaht } from "../../lib/format";
 import { AdBanner } from "../../components/AdBanner";
+import { Banner } from "../../components/Banner";
+import { DiscountInput } from "../../components/DiscountInput";
 
 export default function SplitHalfPage() {
   const [total, setTotal] = useState("");
+  const [discount, setDiscount] = useState("");
+  const [discountType, setDiscountType] = useState<DiscountType>("percent");
   const [shares, setShares] = useState<[number, number] | null>(null);
+  const [base, setBase] = useState(0);
+  const [hasDiscount, setHasDiscount] = useState(false);
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const value = Number(total);
     if (!Number.isFinite(value) || value < 0) return;
-    setShares(splitHalf(value));
+    const reduced = applyDiscount(value, discountType, Number(discount) || 0);
+    setBase(reduced);
+    setHasDiscount(Number(discount) > 0);
+    setShares(splitHalf(reduced));
   }
 
   return (
-    <section>
-      <h1 className="text-2xl font-bold text-gray-900">คำนวณคนละครึ่ง</h1>
-      <p className="mt-1 text-sm text-gray-600">แบ่งเงินเท่ากัน 2 คน</p>
+    <div className="mx-auto flex max-w-150 flex-col px-5 pt-12 md:pt-20">
+      <div className="text-center md:text-left">
+        <h1 className="font-headline text-[28px] font-semibold text-on-surface md:text-[32px]">
+          คำนวณคนละครึ่ง
+        </h1>
+      </div>
 
-      <form onSubmit={handleSubmit} className="mt-6 space-y-4">
-        <div>
-          <label htmlFor="amount" className="block text-sm font-medium text-gray-700">
-            จำนวนเงินรวม (บาท)
-          </label>
-          <input
-            id="amount"
-            type="number"
-            step="0.01"
-            min="0"
-            inputMode="decimal"
-            value={total}
-            onChange={(event) => setTotal(event.target.value)}
-            className="mt-1 w-full rounded-lg border border-gray-300 px-3 py-2"
-            placeholder="เช่น 1000"
+      <Banner imagePath="/images/split-half.png" />
+
+      <div className="glass-card relative overflow-hidden rounded-xl p-8 mt-6">
+        <div className="absolute left-0 top-0 h-1 w-full bg-linear-to-r from-primary to-tertiary-container opacity-50" />
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <div className="flex flex-col gap-2">
+            <label htmlFor="amount" className="label-caps text-primary/80">
+              จำนวนเงินรวม (บาท)
+            </label>
+            <div className="group border-b border-outline-variant/30 transition-all focus-within:border-b-2 focus-within:border-primary">
+              <input
+                id="amount"
+                type="number"
+                step="0.01"
+                min="0"
+                inputMode="decimal"
+                value={total}
+                onChange={(event) => setTotal(event.target.value)}
+                className="w-full bg-transparent p-4 text-on-surface outline-none placeholder:text-on-surface-variant/30"
+                placeholder="เช่น 1000"
+              />
+            </div>
+          </div>
+          <DiscountInput
+            value={discount}
+            type={discountType}
+            onValueChange={setDiscount}
+            onTypeChange={setDiscountType}
           />
-        </div>
-        <button
-          type="submit"
-          className="w-full rounded-lg bg-pink-600 px-4 py-2 font-medium text-white hover:bg-pink-700"
-        >
-          คำนวณ
-        </button>
-      </form>
+          <button
+            type="submit"
+            className="calculate-btn-gradient flex w-full items-center justify-center gap-2 rounded-lg py-4 font-bold text-on-primary transition-all hover:brightness-110 active:scale-[0.98]"
+          >
+            <span className="material-symbols-outlined" aria-hidden="true">calculate</span>
+            คำนวณ
+          </button>
+        </form>
 
-      {shares && (
-        <div className="mt-6 space-y-3 rounded-2xl border border-gray-200 p-5">
-          <div className="flex items-center justify-between">
-            <span className="font-medium text-gray-600">คนที่ 1 จ่าย</span>
-            <span className="text-xl font-bold text-gray-900">{formatBaht(shares[0])}</span>
+        {shares && (
+          <div className="mt-8 space-y-3 rounded-xl border border-primary/20 bg-surface-container-highest p-6">
+            {hasDiscount && (
+              <div className="flex items-center justify-between text-sm">
+                <span className="text-on-surface-variant">ยอดหลังหักส่วนลด</span>
+                <span className="font-bold text-on-surface">{formatBaht(base)}</span>
+              </div>
+            )}
+            <div className="flex items-center justify-between">
+              <span className="label-caps text-on-surface-variant">คนที่ 1 จ่าย</span>
+              <span className="text-[24px] font-bold text-primary">{formatBaht(shares[0])}</span>
+            </div>
+            <div className="flex items-center justify-between">
+              <span className="label-caps text-on-surface-variant">คนที่ 2 จ่าย</span>
+              <span className="text-[24px] font-bold text-primary">{formatBaht(shares[1])}</span>
+            </div>
+            <p className="border-t border-outline-variant/40 pt-2 text-right text-sm text-on-surface-variant">
+              รวม {formatBaht(shares[0] + shares[1])}
+            </p>
           </div>
-          <div className="flex items-center justify-between">
-            <span className="font-medium text-gray-600">คนที่ 2 จ่าย</span>
-            <span className="text-xl font-bold text-gray-900">{formatBaht(shares[1])}</span>
-          </div>
-          <p className="border-t border-gray-100 pt-2 text-right text-sm text-gray-500">
-            รวม {formatBaht(shares[0] + shares[1])}
-          </p>
-        </div>
-      )}
+        )}
+      </div>
 
-      <AdBanner slot="1111111111" />
-    </section>
+      <AdBanner slot="6666666666" />
+    </div>
   );
 }

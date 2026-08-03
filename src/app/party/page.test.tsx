@@ -23,6 +23,32 @@ describe("PartyPage", () => {
     expect(screen.getByText(/ได้เศษ/)).toBeInTheDocument();
   });
 
+  it("applies a baht discount before splitting", async () => {
+    const user = userEvent.setup();
+    render(<PartyPage />);
+
+    await user.type(screen.getByLabelText("จำนวนเงินรวม (บาท)"), "1000");
+    await user.type(screen.getByLabelText("แบ่งให้กี่คน"), "4");
+    await user.selectOptions(screen.getByLabelText("ประเภทส่วนลด"), "baht");
+    await user.type(screen.getByLabelText("ส่วนลด"), "200");
+    await user.click(screen.getByRole("button", { name: "คำนวณ" }));
+
+    expect(screen.getAllByText("฿200.00")).toHaveLength(4);
+    expect(screen.getByText("ยอดหลังหักส่วนลด")).toBeInTheDocument();
+  });
+
+  it("applies a percent discount before splitting", async () => {
+    const user = userEvent.setup();
+    render(<PartyPage />);
+
+    await user.type(screen.getByLabelText("จำนวนเงินรวม (บาท)"), "1000");
+    await user.type(screen.getByLabelText("แบ่งให้กี่คน"), "4");
+    await user.type(screen.getByLabelText("ส่วนลด"), "10");
+    await user.click(screen.getByRole("button", { name: "คำนวณ" }));
+
+    expect(screen.getAllByText("฿225.00")).toHaveLength(4);
+  });
+
   it("handles a single person", async () => {
     const user = userEvent.setup();
     render(<PartyPage />);

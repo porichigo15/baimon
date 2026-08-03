@@ -1,11 +1,11 @@
 ---
 name: unit-test
-description: Use when adding or running unit tests for the baimon (ใบหม่อน) money-splitting website. Trigger words: test, unit test, vitest, testing library, ทดสอบ. This is phase 4 of the 5-phase workflow (analyze -> create-plan -> implement -> unit-test -> final-plan). Covers pure calc functions with Vitest and component render tests with React Testing Library.
+description: Use when adding or running unit tests for the Baimon (ใบหม่อน) money-splitting website. Trigger words: test, unit test, vitest, testing library, ทดสอบ. This is phase 4 of the 5-phase workflow (analyze -> create-plan -> implement -> unit-test -> final-plan). Covers pure calc functions with Vitest and component render tests with React Testing Library.
 ---
 
 # Unit Test
 
-Phase 4 of the baimon (ใบหม่อน) workflow. Prove the implemented behavior with
+Phase 4 of the Baimon (ใบหม่อน) workflow. Prove the implemented behavior with
 Vitest + React Testing Library against the acceptance criteria from the plan.
 
 ## Stack

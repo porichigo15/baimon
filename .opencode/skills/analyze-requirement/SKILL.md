@@ -1,11 +1,11 @@
 ---
 name: analyze-requirement
-description: Use when a task for the baimon (ใบหม่อน) money-splitting website starts and its requirements need clarification. Trigger words: analyze, requirement, แบ่งเงิน requirement, clarify, spec, use case. This is phase 1 of the 5-phase workflow (analyze -> create-plan -> implement -> unit-test -> final-plan) defined in AGENTS.md. This skill only collects and captures requirements — it does NOT write code or make file changes.
+description: Use when a task for the Baimon (ใบหม่อน) money-splitting website starts and its requirements need clarification. Trigger words: analyze, requirement, แบ่งเงิน requirement, clarify, spec, use case. This is phase 1 of the 5-phase workflow (analyze -> create-plan -> implement -> unit-test -> final-plan) defined in AGENTS.md. This skill only collects and captures requirements — it does NOT write code or make file changes.
 ---
 
 # Analyze Requirement
 
-Phase 1 of the baimon (ใบหม่อน) money-splitting website workflow. The goal is
+Phase 1 of the Baimon (ใบหม่อน) money-splitting website workflow. The goal is
 to capture crisp, testable requirements before any planning or coding.
 
 ## Steps

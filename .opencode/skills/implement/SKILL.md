@@ -1,11 +1,11 @@
 ---
 name: implement
-description: Use when writing or editing code for the baimon (ใบหม่อน) money-splitting website, including scaffolding the Next.js project. Trigger words: implement, code, build, เขียนโค้ด, scaffold, create pages. This is phase 3 of the 5-phase workflow (analyze -> create-plan -> implement -> unit-test -> final-plan). Read the plan from docs/plans/ before writing code.
+description: Use when writing or editing code for the Baimon (ใบหม่อน) money-splitting website, including scaffolding the Next.js project. Trigger words: implement, code, build, เขียนโค้ด, scaffold, create pages. This is phase 3 of the 5-phase workflow (analyze -> create-plan -> implement -> unit-test -> final-plan). Read the plan from docs/plans/ before writing code.
 ---
 
 # Implement
 
-Phase 3 of the baimon (ใบหม่อน) workflow. Write the actual code per the plan
+Phase 3 of the Baimon (ใบหม่อน) workflow. Write the actual code per the plan
 created in create-plan and the conventions in AGENTS.md.
 
 ## Steps

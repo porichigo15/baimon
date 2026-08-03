@@ -1,11 +1,11 @@
 ---
 name: final-plan
-description: Use when work on the baimon (ใบหม่อน) money-splitting website is finishing and a wrap-up summary is due. Trigger words: final, สรุป, wrap up, done, finish, summary. This is phase 5 of the 5-phase workflow (analyze -> create-plan -> implement -> unit-test -> final-plan). ALWAYS writes or updates a final plan markdown file in docs/plans/ regardless of whether earlier phases ran. Never skip this file.
+description: Use when work on the Baimon (ใบหม่อน) money-splitting website is finishing and a wrap-up summary is due. Trigger words: final, สรุป, wrap up, done, finish, summary. This is phase 5 of the 5-phase workflow (analyze -> create-plan -> implement -> unit-test -> final-plan). ALWAYS writes or updates a final plan markdown file in docs/plans/ regardless of whether earlier phases ran. Never skip this file.
 ---
 
 # Final Plan
 
-Phase 5 of the baimon (ใบหม่อน) workflow. Every task — even overridden or
+Phase 5 of the Baimon (ใบหม่อน) workflow. Every task — even overridden or
 partially-run tasks — must end with a final plan `.md` written to
 `docs/plans/`. This is a hard requirement from AGENTS.md: do not skip it.
 

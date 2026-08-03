@@ -1,29 +1,23 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import Link from "next/link";
 import Script from "next/script";
+import { Nav } from "../components/Nav";
+import { CookieConsent } from "../components/CookieConsent";
+import { AD_CLIENT_ID } from "../lib/config";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const notoSansThai = localFont({
+  src: "../../fonts/NotoSansThai_Condensed-Regular.ttf",
+  variable: "--font-noto-thai",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "baimon (ใบหม่อน) - คำนวนแบ่งเงิน",
+  title: "Baimon (ใบหม่อน)",
   description: "คำนวณคนละครึ่ง ไทยช่วยไทย 60/40 และหารเงินกันเอง",
+  themeColor: "#ffffff",
 };
-
-const navItems = [
-  { href: "/split-half", label: "คนละครึ่ง" },
-  { href: "/thai-help", label: "ไทยช่วยไทย" },
-  { href: "/party", label: "หารกัน" },
-];
 
 export default function RootLayout({
   children,
@@ -31,35 +25,64 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="th"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">
+    <html lang="th" className={`${notoSansThai.variable} h-full antialiased`}>
+      <body className="flex min-h-full flex-col overflow-x-hidden">
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap"
+        />
         <Script
           async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${AD_CLIENT_ID}`}
           crossOrigin="anonymous"
           strategy="afterInteractive"
         />
-        <header className="border-b border-gray-200 bg-white">
-          <div className="mx-auto flex max-w-3xl items-center justify-between px-4 py-3">
-            <Link href="/" className="text-lg font-bold text-pink-600">
-              baimon (ใบหม่อน)
-            </Link>
-            <nav className="flex gap-4 text-sm text-gray-700">
-              {navItems.map((item) => (
-                <Link key={item.href} href={item.href} className="hover:text-pink-600">
-                  {item.label}
-                </Link>
-              ))}
-            </nav>
+        <header className="sticky top-0 z-50 border-b border-outline-variant/40 bg-surface/80 backdrop-blur-md">
+          <div className="mx-auto flex h-16 w-full max-w-300 items-center justify-between px-5 md:px-10">
+            <div className="flex items-center gap-3">
+              <img src="/images/logo.png" alt="Baimon Logo" className="h-10 w-10" />
+              <Link
+                href="/"
+                className="font-headline text-[20px] font-bold text-primary"
+              >
+                Baimon (ใบหม่อน)
+              </Link>
+            </div>
+            <Nav />
+            <button
+              type="button"
+              className="md:hidden"
+              aria-label="เมนู"
+            >
+              <span className="material-symbols-outlined text-on-surface">menu</span>
+            </button>
           </div>
         </header>
-        <main className="mx-auto w-full max-w-3xl flex-1 px-4 py-8">{children}</main>
-        <footer className="border-t border-gray-200 py-4 text-center text-sm text-gray-500">
-          baimon (ใบหม่อน) คำนวณแบ่งเงิน
+        <main className="flex-1">{children}</main>
+        <footer className="border-t border-outline-variant/40 bg-surface-container-lowest">
+          <div className="mx-auto flex w-full max-w-300 flex-col items-center justify-between gap-8 px-5 py-12 md:flex-row md:items-center md:px-10">
+            <div className="flex flex-col items-center gap-2 md:items-start">
+              <div className="font-headline text-[20px] font-bold text-on-surface">
+                Baimon (ใบหม่อน)
+              </div>
+              <p className="label-caps text-on-surface-variant/60">
+                © 2026 Baimon (ใบหม่อน) - Lomana Loma
+              </p>
+            </div>
+            <div className="flex gap-6">
+              <a className="label-caps text-on-surface-variant transition-colors hover:text-primary" href="#">
+                เกี่ยวกับเรา
+              </a>
+              <Link className="label-caps text-on-surface-variant transition-colors hover:text-primary" href="/privacy">
+                นโยบายความเป็นส่วนตัว
+              </Link>
+              <a className="label-caps text-on-surface-variant transition-colors hover:text-primary" href="#">
+                ติดต่อเรา
+              </a>
+            </div>
+          </div>
         </footer>
+        <CookieConsent />
       </body>
     </html>
   );

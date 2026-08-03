@@ -1,11 +1,11 @@
 ---
 name: create-plan
-description: Use when requirements for the baimon (ใบหม่อน) money-splitting website have been analyzed or need to be turned into an actionable task list. Trigger words include plan, แผน, implement plan, task list, steps. This is phase 2 of the 5-phase workflow (analyze -> create-plan -> implement -> unit-test -> final-plan). It produces the working plan and writes it to docs/plans/ but does NOT write application code.
+description: Use when requirements for the Baimon (ใบหม่อน) money-splitting website have been analyzed or need to be turned into an actionable task list. Trigger words include plan, แผน, implement plan, task list, steps. This is phase 2 of the 5-phase workflow (analyze -> create-plan -> implement -> unit-test -> final-plan). It produces the working plan and writes it to docs/plans/ but does NOT write application code.
 ---
 
 # Create Plan
 
-Phase 2 of the baimon (ใบหม่อน) workflow. Turn accepted requirements from
+Phase 2 of the Baimon (ใบหม่อน) workflow. Turn accepted requirements from
 analyze-requirement into an ordered, verifiable task list and persist it.
 
 ## Steps

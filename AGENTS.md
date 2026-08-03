@@ -4,7 +4,7 @@ This file provides guidance for AI coding agents working in this repository.
 
 ## Project
 
-- **App name**: baimon (ใบหม่อน)
+- **App name**: Baimon (ใบหม่อน)
 - **What it is**: A Thai-language money splitting website. Users can divide and calculate money for a party, split a bill evenly (50/50), or split by proportion (60/40).
 - **Language**: All user-facing UI text is in **Thai (th)**. Machine-facing output (code, comments, commit messages) is English.
 - **Currency**: Format amounts with `Intl.NumberFormat('th-TH', { style: 'currency', currency: 'THB' })`.
