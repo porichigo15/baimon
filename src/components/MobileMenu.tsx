@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { LineIcon } from "./LineIcon";
 
 const items = [
   { href: "/", label: "หน้าแรก" },
@@ -34,10 +35,13 @@ export function MobileMenu() {
   }, [open]);
 
   return (
-    <>
+    <div className="flex items-center gap-3">
+      <Link href="https://lin.ee/ZiAamj3r" className="flex items-center gap-2" target="_blank" rel="noopener noreferrer">
+        {<LineIcon />} เพิ่มเพื่อน
+      </Link>
       <button
         type="button"
-        className="md:hidden"
+        className="md:hidden flex"
         aria-label="เมนู"
         aria-expanded={open}
         aria-controls="mobile-drawer"
@@ -105,6 +109,6 @@ export function MobileMenu() {
           </div>,
           document.body,
         )}
-    </>
+    </div>
   );
 }

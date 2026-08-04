@@ -2,13 +2,11 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LineIcon } from "./LineIcon";
 
 const items = [
   { href: "/party", label: "หารกัน" },
   { href: "/thai-help", label: "ไทยช่วยไทย" },
   { href: "/split-half", label: "คนละครึ่ง" },
-  { href: "https://lin.ee/ZiAamj3r", label: "เพิ่มเพื่อน" },
 ];
 
 export function Nav() {
@@ -29,7 +27,6 @@ export function Nav() {
             }`}
           >
             {item.label}
-            {item.href.startsWith("https://lin.ee") && <LineIcon />}
           </Link>
         );
       })}
