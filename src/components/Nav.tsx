@@ -2,11 +2,13 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { LineIcon } from "./LineIcon";
 
 const items = [
   { href: "/party", label: "หารกัน" },
   { href: "/thai-help", label: "ไทยช่วยไทย" },
   { href: "/split-half", label: "คนละครึ่ง" },
+  { href: "https://lin.ee/ZiAamj3r", label: "เพิ่มเพื่อน" },
 ];
 
 export function Nav() {
@@ -20,13 +22,14 @@ export function Nav() {
           <Link
             key={item.href}
             href={item.href}
-            className={`label-caps transition-colors duration-200 ${
+            className={`label-caps transition-colors duration-200 flex items-center gap-2 ${
               active
                 ? "border-b-2 border-primary pb-1 text-primary"
                 : "text-on-surface-variant/70 hover:text-primary"
             }`}
           >
             {item.label}
+            {item.href.startsWith("https://lin.ee") && <LineIcon />}
           </Link>
         );
       })}
