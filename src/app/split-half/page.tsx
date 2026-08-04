@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import type { FormEvent } from "react";
-import { splitHalf } from "../../calc/splitHalf";
+import { DAILY_LIMIT, splitHalf } from "../../calc/splitHalf";
 import { applyDiscount, type DiscountType } from "../../calc/discount";
 import { formatBaht } from "../../lib/format";
 import { AdBanner } from "../../components/AdBanner";
@@ -25,6 +25,8 @@ export default function SplitHalfPage() {
     setBase(reduced);
     setHasDiscount(Number(discount) > 0);
     setShares(splitHalf(reduced));
+    
+    window.scrollTo({ top: 700, behavior: "smooth" });
   }
 
   return (
@@ -36,6 +38,20 @@ export default function SplitHalfPage() {
       </div>
 
       <Banner imagePath="/images/split-half.png" />
+      
+      <div className="glass-card mb-6 flex items-center justify-between rounded-xl p-6 mt-6">
+        <div className="flex items-center gap-4">
+          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary">
+            <span className="material-symbols-outlined" aria-hidden="true">verified_user</span>
+          </div>
+          <div>
+            <p className="text-sm text-on-surface-variant">สวัสดิการภาครัฐ</p>
+            <p className="font-semibold text-on-surface">
+              รัฐสนับสนุนสูงสุด {formatBaht(DAILY_LIMIT)} / วัน
+            </p>
+          </div>
+        </div>
+      </div>
 
       <div className="glass-card relative overflow-hidden rounded-xl p-8 mt-6">
         <div className="absolute left-0 top-0 h-1 w-full bg-linear-to-r from-primary to-tertiary-container opacity-50" />
@@ -82,11 +98,11 @@ export default function SplitHalfPage() {
               </div>
             )}
             <div className="flex items-center justify-between">
-              <span className="label-caps text-on-surface-variant">คนที่ 1 จ่าย</span>
+              <span className="label-caps text-on-surface-variant">รัฐจ่าย</span>
               <span className="text-[24px] font-bold text-primary">{formatBaht(shares[0])}</span>
             </div>
             <div className="flex items-center justify-between">
-              <span className="label-caps text-on-surface-variant">คนที่ 2 จ่าย</span>
+              <span className="label-caps text-on-surface-variant">เราจ่าย</span>
               <span className="text-[24px] font-bold text-primary">{formatBaht(shares[1])}</span>
             </div>
             <p className="border-t border-outline-variant/40 pt-2 text-right text-sm text-on-surface-variant">

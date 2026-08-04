@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import type { FormEvent } from "react";
-import { splitThaiHelp, THAI_HELP_DAILY_CAP } from "../../calc/splitThaiHelp";
+import { splitThaiHelp, DAILY_LIMIT } from "../../calc/splitThaiHelp";
 import { applyDiscount, type DiscountType } from "../../calc/discount";
 import { formatBaht } from "../../lib/format";
 import { AdBanner } from "../../components/AdBanner";
@@ -27,10 +27,12 @@ export default function ThaiHelpPage() {
     const value = Number(amount);
     if (!Number.isFinite(value) || value < 0) return;
     const reduced = applyDiscount(value, discountType, Number(discount) || 0);
-    const { govShare, userShare } = splitThaiHelp(reduced, THAI_HELP_DAILY_CAP);
+    const { govShare, userShare } = splitThaiHelp(reduced, DAILY_LIMIT);
     setBase(reduced);
     setHasDiscount(Number(discount) > 0);
     setResult({ govShare, userShare });
+
+    window.scrollTo({ top: 700, behavior: "smooth" });
   }
 
   return (
@@ -51,7 +53,7 @@ export default function ThaiHelpPage() {
           <div>
             <p className="text-sm text-on-surface-variant">สวัสดิการภาครัฐ</p>
             <p className="font-semibold text-on-surface">
-              รัฐสนับสนุนสูงสุด {formatBaht(THAI_HELP_DAILY_CAP)} / วัน
+              รัฐสนับสนุนสูงสุด {formatBaht(DAILY_LIMIT)} / วัน
             </p>
           </div>
         </div>
@@ -106,7 +108,7 @@ export default function ThaiHelpPage() {
                 <span className="font-bold text-on-surface">{formatBaht(base)}</span>
               </div>
             )}
-            <div className="grid grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 gap-6">
               <div>
                 <p className="label-caps mb-1 text-on-surface-variant">
                   รัฐช่วยจ่าย (เงินสนับสนุน)

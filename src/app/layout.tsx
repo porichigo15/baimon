@@ -17,7 +17,6 @@ const notoSansThai = localFont({
 export const metadata: Metadata = {
   title: "Baimon (ใบหม่อน)",
   description: "คำนวณคนละครึ่ง ไทยช่วยไทย 60/40 และหารเงินกันเอง",
-  themeColor: "#ffffff",
   other: {
     "google-adsense-account": AD_CLIENT_ID,
   },

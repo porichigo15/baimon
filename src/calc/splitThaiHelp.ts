@@ -1,6 +1,6 @@
 import { round2 } from "./round";
 
-export const THAI_HELP_DAILY_CAP = 200;
+export const DAILY_LIMIT = 200;
 
 export interface ThaiHelpResult {
   govShare: number;
