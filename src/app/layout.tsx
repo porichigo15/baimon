@@ -43,12 +43,11 @@ export default function RootLayout({
         <header className="sticky top-0 z-50 border-b border-outline-variant/40 bg-surface/80 backdrop-blur-md">
           <div className="mx-auto flex h-16 w-full max-w-300 items-center justify-between px-5 md:px-10">
             <div className="flex items-center gap-3">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/images/logo.png" alt="Baimon Logo" className="h-10 w-10" />
               <Link
                 href="/"
-                className="font-headline text-[20px] font-bold text-primary"
+                className="font-headline text-[20px] font-bold text-primary flex items-center gap-3"
               >
+                <img src="/images/logo.png" alt="Baimon Logo" className="h-10 w-10" />
                 Baimon (ใบหม่อน)
               </Link>
             </div>
