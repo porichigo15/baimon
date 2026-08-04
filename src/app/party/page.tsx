@@ -28,6 +28,8 @@ export default function PartyPage() {
     setBase(reduced);
     setHasDiscount(Number(discount) > 0);
     setShares(splitParty(reduced, count));
+
+    window.scrollTo({ top: 700, behavior: "smooth" });
   }
 
   const total = shares ? shares.reduce((sum, share) => sum + share, 0) : null;
