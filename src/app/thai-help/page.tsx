@@ -36,7 +36,7 @@ export default function ThaiHelpPage() {
   }
 
   return (
-    <div className="mx-auto max-w-150 px-5 py-12 md:py-16">
+    <div className="mx-auto max-w-150 px-5 pb-28 pt-12 md:py-16">
       <div className="text-center md:text-left">
         <h1 className="font-headline text-[28px] font-semibold text-on-surface md:text-[32px]">
           คำนวณไทยช่วยไทย 60/40

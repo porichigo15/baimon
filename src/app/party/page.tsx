@@ -35,7 +35,7 @@ export default function PartyPage() {
   const total = shares ? shares.reduce((sum, share) => sum + share, 0) : null;
 
   return (
-    <div className="relative">
+    <div className="relative pb-28">
       <div className="mx-auto flex max-w-150 flex-col px-5 pt-12 md:pt-20">
         <div className="text-center md:text-left">
           <h1 className="font-headline text-[28px] font-semibold text-on-surface md:text-[32px]">

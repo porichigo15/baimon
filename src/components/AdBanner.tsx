@@ -21,9 +21,9 @@ export function AdBanner({ slot }: { slot?: string }) {
   }, [consent]);
 
   return (
-    <section className="mx-auto mb-12 mt-6 w-full max-w-150 px-6">
-      <div className="flex min-h-30 w-full flex-col items-center justify-center rounded-lg border border-dashed border-outline-variant/30 bg-surface-container-low p-4 text-center">
-        <span className="label-caps mb-2 text-on-surface-variant/40">
+    <section className="fixed inset-x-0 bottom-0 z-40 border-t border-outline-variant/40 bg-surface/90 p-2 backdrop-blur-md">
+      <div className="mx-auto flex h-14 w-full max-w-150 items-center justify-center gap-3 rounded-lg border border-dashed border-outline-variant/30 bg-surface-container-low px-4 text-center">
+        <span className="label-caps text-on-surface-variant/40">
           Advertisement
         </span>
         <ins

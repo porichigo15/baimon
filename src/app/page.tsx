@@ -28,9 +28,11 @@ const tools = [
 ];
 
 export default function Home() {
+  const displayAds = false;
+
   return (
-    <div className="relative">
-      <section className="relative overflow-hidden pb-16 pt-24 md:pb-24 md:pt-32">
+    <div className="relative pb-28">
+      <section className="relative overflow-hidden pt-8 mb-8">
         <div className="hero-gradient pointer-events-none absolute inset-0" />
         <div className="relative z-10 mx-auto max-w-300 px-5 text-center md:px-10">
           <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-2 text-primary">
@@ -46,8 +48,6 @@ export default function Home() {
           </p>
         </div>
       </section>
-
-      <AdBanner slot="4444444444" />
 
       <section id="tools" className="pb-16">
         <div className="mx-auto max-w-300 px-5 md:px-10">
@@ -76,6 +76,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {displayAds && <AdBanner slot="0000000000" />}
     </div>
   );
 }

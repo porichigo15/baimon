@@ -30,7 +30,7 @@ export default function SplitHalfPage() {
   }
 
   return (
-    <div className="mx-auto flex max-w-150 flex-col px-5 pt-12 md:pt-20">
+    <div className="mx-auto flex max-w-150 flex-col px-5 pb-28 pt-12 md:pt-20">
       <div className="text-center md:text-left">
         <h1 className="font-headline text-[28px] font-semibold text-on-surface md:text-[32px]">
           คำนวณคนละครึ่ง
