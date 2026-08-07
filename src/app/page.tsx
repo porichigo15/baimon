@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { AdBanner } from "../components/AdBanner";
+import { DISPLAY_ADS } from "@/lib/config";
 
 export const metadata: Metadata = {
   title: "Baimon (ใบหม่อน)",
@@ -28,8 +29,6 @@ const tools = [
 ];
 
 export default function Home() {
-  const displayAds = false;
-
   return (
     <div className="relative pb-28">
       <section className="relative overflow-hidden pt-8 mb-8">
@@ -77,7 +76,7 @@ export default function Home() {
         </div>
       </section>
 
-      {displayAds && <AdBanner slot="0000000000" />}
+      {DISPLAY_ADS && <AdBanner slot="0000000000" />}
     </div>
   );
 }

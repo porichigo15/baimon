@@ -8,6 +8,7 @@ import { formatBaht } from "../../lib/format";
 import { AdBanner } from "../../components/AdBanner";
 import { Banner } from "../../components/Banner";
 import { DiscountInput } from "../../components/DiscountInput";
+import { DISPLAY_ADS } from "@/lib/config";
 
 export default function PartyPage() {
   const [amount, setAmount] = useState("");
@@ -124,7 +125,7 @@ export default function PartyPage() {
           )}
         </div>
 
-        <AdBanner slot="1010101010" />
+        {DISPLAY_ADS && <AdBanner slot="0000000000" />}
       </div>
     </div>
   );

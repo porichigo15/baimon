@@ -8,6 +8,7 @@ import { formatBaht } from "../../lib/format";
 import { AdBanner } from "../../components/AdBanner";
 import { Banner } from "../../components/Banner";
 import { DiscountInput } from "../../components/DiscountInput";
+import { DISPLAY_ADS } from "@/lib/config";
 
 export default function SplitHalfPage() {
   const [total, setTotal] = useState("");
@@ -25,7 +26,7 @@ export default function SplitHalfPage() {
     setBase(reduced);
     setHasDiscount(Number(discount) > 0);
     setShares(splitHalf(reduced));
-    
+
     window.scrollTo({ top: 700, behavior: "smooth" });
   }
 
@@ -38,7 +39,7 @@ export default function SplitHalfPage() {
       </div>
 
       <Banner imagePath="/images/split-half.png" />
-      
+
       <div className="glass-card mb-6 flex items-center justify-between rounded-xl p-6 mt-6">
         <div className="flex items-center gap-4">
           <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary">
@@ -54,7 +55,6 @@ export default function SplitHalfPage() {
       </div>
 
       <div className="glass-card relative overflow-hidden rounded-xl p-8 mt-6">
-        <div className="absolute left-0 top-0 h-1 w-full bg-linear-to-r from-primary to-tertiary-container opacity-50" />
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="flex flex-col gap-2">
             <label htmlFor="amount" className="label-caps text-primary/80">
@@ -90,29 +90,34 @@ export default function SplitHalfPage() {
         </form>
 
         {shares && (
-          <div className="mt-8 space-y-3 rounded-xl border border-primary/20 bg-surface-container-highest p-6">
+          <div className="mt-8 rounded-xl border-l-4 border-primary bg-surface-container-highest p-8">
             {hasDiscount && (
-              <div className="flex items-center justify-between text-sm">
+              <div className="mb-4 flex items-center justify-between text-sm">
                 <span className="text-on-surface-variant">ยอดหลังหักส่วนลด</span>
                 <span className="font-bold text-on-surface">{formatBaht(base)}</span>
               </div>
             )}
-            <div className="flex items-center justify-between">
-              <span className="label-caps text-on-surface-variant">รัฐจ่าย</span>
-              <span className="text-[24px] font-bold text-primary">{formatBaht(shares[0])}</span>
+            <div className="grid grid-cols-1 gap-6">
+              <div>
+                <p className="label-caps mb-1 text-on-surface-variant">
+                  รัฐช่วยจ่าย (เงินสนับสนุน)
+                </p>
+                <p className="text-[24px] font-bold text-primary">
+                  {formatBaht(shares[0])}
+                </p>
+              </div>
+              <div>
+                <p className="label-caps mb-1 text-on-surface-variant">ต้องจ่ายเอง</p>
+                <p className="text-[24px] font-bold text-on-surface">
+                  {formatBaht(shares[1])}
+                </p>
+              </div>
             </div>
-            <div className="flex items-center justify-between">
-              <span className="label-caps text-on-surface-variant">เราจ่าย</span>
-              <span className="text-[24px] font-bold text-primary">{formatBaht(shares[1])}</span>
-            </div>
-            <p className="border-t border-outline-variant/40 pt-2 text-right text-sm text-on-surface-variant">
-              รวม {formatBaht(shares[0] + shares[1])}
-            </p>
           </div>
         )}
       </div>
 
-      <AdBanner slot="6666666666" />
+      {DISPLAY_ADS && <AdBanner slot="0000000000" />}
     </div>
   );
 }

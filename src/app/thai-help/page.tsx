@@ -8,6 +8,7 @@ import { formatBaht } from "../../lib/format";
 import { AdBanner } from "../../components/AdBanner";
 import { Banner } from "../../components/Banner";
 import { DiscountInput } from "../../components/DiscountInput";
+import { DISPLAY_ADS } from "@/lib/config";
 
 interface Result {
   govShare: number;
@@ -128,7 +129,7 @@ export default function ThaiHelpPage() {
         )}
       </div>
 
-      <AdBanner slot="8888888888" />
+      {DISPLAY_ADS && <AdBanner slot="0000000000" />}
     </div>
   );
 }
