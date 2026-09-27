@@ -66,16 +66,19 @@ export default function RootLayout({
                 © 2026 Baimon (ใบหม่อน) - Lomana Loma
               </p>
             </div>
-            <div className="flex gap-6">
-              <a className="label-caps text-on-surface-variant transition-colors hover:text-primary" href="#">
+            <div className="flex flex-wrap justify-center gap-6">
+              <Link className="label-caps text-on-surface-variant transition-colors hover:text-primary" href="/about">
                 เกี่ยวกับเรา
-              </a>
+              </Link>
+              <Link className="label-caps text-on-surface-variant transition-colors hover:text-primary" href="/terms">
+                ข้อกำหนดการใช้งาน
+              </Link>
               <Link className="label-caps text-on-surface-variant transition-colors hover:text-primary" href="/privacy">
                 นโยบายความเป็นส่วนตัว
               </Link>
-              <a className="label-caps text-on-surface-variant transition-colors hover:text-primary" href="#">
+              <Link className="label-caps text-on-surface-variant transition-colors hover:text-primary" href="/contact">
                 ติดต่อเรา
-              </a>
+              </Link>
             </div>
           </div>
         </footer>

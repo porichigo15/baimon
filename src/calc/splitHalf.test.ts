@@ -22,4 +22,11 @@ describe("splitHalf", () => {
     const [a, b] = splitHalf(1234.56);
     expect(a + b).toBeCloseTo(1234.56, 10);
   });
+
+  it("caps the government share when remaining limit is specified", () => {
+    expect(splitHalf(1000, 200)).toEqual([200, 800]);
+    expect(splitHalf(300, 80)).toEqual([80, 220]);
+    expect(splitHalf(100, 200)).toEqual([50, 50]);
+    expect(splitHalf(100, 0)).toEqual([0, 100]);
+  });
 });

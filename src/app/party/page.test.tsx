@@ -57,7 +57,13 @@ describe("PartyPage", () => {
     await user.type(screen.getByLabelText("แบ่งให้กี่คน"), "1");
     await user.click(screen.getByRole("button", { name: "คำนวณ" }));
 
-    expect(screen.getByText("฿500.00")).toBeInTheDocument();
+    expect(screen.getAllByText("฿500.00").length).toBeGreaterThan(0);
     expect(screen.getByText("รวม ฿500.00")).toBeInTheDocument();
+  });
+
+  it("renders the educational guide and FAQ section", () => {
+    render(<PartyPage />);
+    expect(screen.getByRole("heading", { name: "หลักการหารเงินและจัดการเศษสตางค์" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "คำถามที่พบบ่อย (FAQ)" })).toBeInTheDocument();
   });
 });

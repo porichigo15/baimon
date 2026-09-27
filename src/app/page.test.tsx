@@ -27,4 +27,10 @@ describe("HomePage", () => {
     expect(screen.getByAltText("คำนวณไทยช่วยไทย 60/40").closest("a")).toHaveAttribute("href", "/thai-help");
     expect(screen.getByAltText("หารกัน").closest("a")).toHaveAttribute("href", "/party");
   });
+
+  it("renders the feature highlights section", () => {
+    render(<HomePage />);
+    expect(screen.getByRole("heading", { name: /ทำไมต้องเลือกใช้/ })).toBeInTheDocument();
+    expect(screen.getByText("คำนวณแม่นยำ ไร้ข้อโต้แย้ง")).toBeInTheDocument();
+  });
 });

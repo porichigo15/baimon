@@ -28,9 +28,10 @@ describe("AdBanner", () => {
     expect(window.adsbygoogle).toBeUndefined();
   });
 
-  it("renders a fixed banner pinned to the bottom of the viewport", () => {
+  it("renders an in-flow banner within normal page layout", () => {
     render(<AdBanner />);
     const wrapper = screen.getByText(/โฆษณา/).closest("section");
-    expect(wrapper).toHaveClass("fixed", "inset-x-0", "bottom-0", "z-40");
+    expect(wrapper).toHaveClass("my-8", "w-full");
+    expect(wrapper).not.toHaveClass("fixed");
   });
 });

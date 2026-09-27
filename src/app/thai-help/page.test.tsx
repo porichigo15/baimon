@@ -8,7 +8,7 @@ describe("ThaiHelpPage", () => {
     render(<ThaiHelpPage />);
     expect(screen.getByRole("heading", { name: "คำนวณไทยช่วยไทย 60/40" })).toBeInTheDocument();
     expect(screen.getByText(/รัฐสนับสนุนสูงสุด/)).toBeInTheDocument();
-    expect(screen.getByText(/฿200\.00/)).toBeInTheDocument();
+    expect(screen.getAllByText(/฿200\.00/).length).toBeGreaterThan(0);
   });
 
   it("computes 60/40 capped at 200 baht per day", async () => {
@@ -18,8 +18,8 @@ describe("ThaiHelpPage", () => {
     await user.type(screen.getByLabelText("ยอดเงินที่จ่าย (บาท)"), "500");
     await user.click(screen.getByRole("button", { name: "คำนวณ" }));
 
-    expect(screen.getByText("฿200.00")).toBeInTheDocument();
-    expect(screen.getByText("฿300.00")).toBeInTheDocument();
+    expect(screen.getAllByText("฿200.00").length).toBeGreaterThan(0);
+    expect(screen.getAllByText("฿300.00").length).toBeGreaterThan(0);
   });
 
   it("applies a percent discount before computing support", async () => {
@@ -54,7 +54,27 @@ describe("ThaiHelpPage", () => {
     await user.type(screen.getByLabelText("ยอดเงินที่จ่าย (บาท)"), "100");
     await user.click(screen.getByRole("button", { name: "คำนวณ" }));
 
-    expect(screen.getByText("฿60.00")).toBeInTheDocument();
-    expect(screen.getByText("฿40.00")).toBeInTheDocument();
+    expect(screen.getAllByText("฿60.00").length).toBeGreaterThan(0);
+    expect(screen.getAllByText("฿40.00").length).toBeGreaterThan(0);
+  });
+
+  it("caps support at a custom remaining limit", async () => {
+    const user = userEvent.setup();
+    render(<ThaiHelpPage />);
+
+    await user.type(screen.getByLabelText("ยอดเงินที่จ่าย (บาท)"), "200");
+    const remainingInput = screen.getByLabelText("วงเงินสิทธิ์รัฐคงเหลือ (บาท)");
+    await user.clear(remainingInput);
+    await user.type(remainingInput, "50");
+    await user.click(screen.getByRole("button", { name: "คำนวณ" }));
+
+    expect(screen.getByText("฿50.00")).toBeInTheDocument();
+    expect(screen.getByText("฿150.00")).toBeInTheDocument();
+  });
+
+  it("renders the educational guide and FAQ section", () => {
+    render(<ThaiHelpPage />);
+    expect(screen.getByRole("heading", { name: "หลักการคำนวณไทยช่วยไทย 60/40" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "คำถามที่พบบ่อย (FAQ)" })).toBeInTheDocument();
   });
 });

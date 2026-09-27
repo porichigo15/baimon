@@ -8,7 +8,7 @@ import { formatBaht } from "../../lib/format";
 import { AdBanner } from "../../components/AdBanner";
 import { Banner } from "../../components/Banner";
 import { DiscountInput } from "../../components/DiscountInput";
-import { DISPLAY_ADS } from "@/lib/config";
+import { DISPLAY_ADS } from "../../lib/config";
 
 export default function PartyPage() {
   const [amount, setAmount] = useState("");
@@ -36,7 +36,7 @@ export default function PartyPage() {
   const total = shares ? shares.reduce((sum, share) => sum + share, 0) : null;
 
   return (
-    <div className="relative pb-28">
+    <div className="relative pb-16">
       <div className="mx-auto flex max-w-150 flex-col px-5 pt-12 md:pt-20">
         <div className="text-center md:text-left">
           <h1 className="font-headline text-[28px] font-semibold text-on-surface md:text-[32px]">
@@ -123,6 +123,81 @@ export default function PartyPage() {
               </p>
             </div>
           )}
+        </div>
+
+        <div className="mt-12 space-y-8">
+          <section className="glass-card rounded-xl p-6 md:p-8">
+            <h2 className="font-headline text-[20px] font-semibold text-primary">
+              หลักการหารเงินและจัดการเศษสตางค์
+            </h2>
+            <p className="mt-3 leading-relaxed text-on-surface-variant">
+              การหารบิลค่าอาหาร ทริปท่องเที่ยว หรือกิจกรรมกลุ่มหลายๆ คน มักเกิดปัญหาเศษสตางค์หารไม่ลงตัว Baimon ใช้ระบบ <strong>Penny Rounding Algorithm</strong> โดยคำนวณปัดเศษเป็นธรรม:
+            </p>
+            <div className="my-4 rounded-lg bg-surface-container-high p-4 text-center font-mono text-sm text-primary font-bold">
+              ยอดจ่ายพื้นฐาน = ยอดรวมสุทธิ ÷ จำนวนคน (ปัดเศษ 2 ตำแหน่ง)
+            </div>
+            <p className="leading-relaxed text-on-surface-variant">
+              หากมีเศษสตางค์คงเหลือจากการหาร ระบบจะนำเศษนั้นไปรวมไว้ที่ <strong>คนที่ 1</strong> เพื่อรับประกันว่ายอดรวมที่เพื่อนทุกคนโอนมารวมกันจะตรงกับยอดบิลจริงพอดี 100% ไม่ขาดไม่เกิน
+            </p>
+          </section>
+
+          <section className="glass-card rounded-xl p-6 md:p-8">
+            <h2 className="font-headline text-[20px] font-semibold text-primary">
+              ตัวอย่างการหารเงินในกลุ่ม
+            </h2>
+            <div className="mt-4 overflow-x-auto">
+              <table className="w-full text-left text-sm text-on-surface-variant">
+                <thead>
+                  <tr className="border-b border-outline-variant/30 text-on-surface font-semibold">
+                    <th className="py-3 px-2">ยอดรวม</th>
+                    <th className="py-3 px-2">จำนวนคน</th>
+                    <th className="py-3 px-2">คนที่ 1 จ่าย (รวมเศษ)</th>
+                    <th className="py-3 px-2">คนอื่นๆ แต่ละคนจ่าย</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-outline-variant/20">
+                  <tr>
+                    <td className="py-3 px-2 font-medium text-on-surface">฿100.00</td>
+                    <td className="py-3 px-2">3 คน</td>
+                    <td className="py-3 px-2 text-primary font-semibold">฿33.34</td>
+                    <td className="py-3 px-2">฿33.33</td>
+                  </tr>
+                  <tr>
+                    <td className="py-3 px-2 font-medium text-on-surface">฿1,000.00</td>
+                    <td className="py-3 px-2">6 คน</td>
+                    <td className="py-3 px-2 text-primary font-semibold">฿166.70</td>
+                    <td className="py-3 px-2">฿166.66</td>
+                  </tr>
+                  <tr>
+                    <td className="py-3 px-2 font-medium text-on-surface">฿2,500.00</td>
+                    <td className="py-3 px-2">4 คน</td>
+                    <td className="py-3 px-2 text-primary font-semibold">฿625.00</td>
+                    <td className="py-3 px-2">฿625.00</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section className="glass-card rounded-xl p-6 md:p-8">
+            <h2 className="font-headline text-[20px] font-semibold text-primary">
+              คำถามที่พบบ่อย (FAQ)
+            </h2>
+            <div className="mt-4 space-y-4">
+              <div>
+                <h3 className="font-semibold text-on-surface">Q: รองรับการหารสูงสุดกี่คน?</h3>
+                <p className="mt-1 text-sm text-on-surface-variant">
+                  สามารถใส่จำนวนคนได้ตั้งแต่ 1 คนขึ้นไปได้ไม่จำกัด ระบบจะคำนวณและแจกแจงรายบุคคลให้อย่างละเอียดทันที
+                </p>
+              </div>
+              <div>
+                <h3 className="font-semibold text-on-surface">Q: หากร้านมี Service Charge หรือภาษีมูลค่าเพิ่ม (VAT) ควรใส่ยอดไหน?</h3>
+                <p className="mt-1 text-sm text-on-surface-variant">
+                  ควรใส่ยอดรวมสุทธิสุดท้ายจากใบเสร็จ (Grand Total) เพื่อให้ผลรวมการหารกระจายยอดค่าบริการและภาษีให้ทุกคนอย่างเท่าเทียม
+                </p>
+              </div>
+            </div>
+          </section>
         </div>
 
         {DISPLAY_ADS && <AdBanner slot="0000000000" />}

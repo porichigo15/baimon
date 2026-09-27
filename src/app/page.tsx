@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { AdBanner } from "../components/AdBanner";
-import { DISPLAY_ADS } from "@/lib/config";
+import { DISPLAY_ADS } from "../lib/config";
 
 export const metadata: Metadata = {
   title: "Baimon (ใบหม่อน)",
@@ -30,7 +30,7 @@ const tools = [
 
 export default function Home() {
   return (
-    <div className="relative pb-28">
+    <div className="relative pb-16">
       <section className="relative overflow-hidden pt-8 mb-8">
         <div className="hero-gradient pointer-events-none absolute inset-0" />
         <div className="relative z-10 mx-auto max-w-300 px-5 text-center md:px-10">
@@ -72,6 +72,63 @@ export default function Home() {
                 </div>
               </Link>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="pb-16">
+        <div className="mx-auto max-w-300 px-5 md:px-10">
+          <div className="glass-card rounded-2xl p-8 md:p-12">
+            <h2 className="font-headline text-center text-[24px] font-bold text-on-surface md:text-[28px]">
+              ทำไมต้องเลือกใช้ <span className="text-primary">Baimon (ใบหม่อน)</span>
+            </h2>
+            <p className="mx-auto mt-2 max-w-xl text-center text-sm text-on-surface-variant">
+              เครื่องมือช่วยคิดเลขและแบ่งค่าใช้จ่ายที่ออกแบบมาเพื่อคนไทยโดยเฉพาะ
+            </p>
+
+            <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-3">
+              <div className="flex flex-col items-center text-center p-4">
+                <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+                  <span className="material-symbols-outlined text-[28px]" aria-hidden="true">
+                    calculate
+                  </span>
+                </div>
+                <h3 className="font-headline text-[18px] font-semibold text-on-surface">
+                  คำนวณแม่นยำ ไร้ข้อโต้แย้ง
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-on-surface-variant">
+                  รองรับเศษสตางค์และการปัดเศษอย่างเป็นธรรม ไม่ว่าจะเป็นบิลหารหลายคนหรือโครงการภาครัฐ
+                </p>
+              </div>
+
+              <div className="flex flex-col items-center text-center p-4">
+                <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+                  <span className="material-symbols-outlined text-[28px]" aria-hidden="true">
+                    lock
+                  </span>
+                </div>
+                <h3 className="font-headline text-[18px] font-semibold text-on-surface">
+                  ปลอดภัย ไม่เก็บข้อมูลส่วนตัว
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-on-surface-variant">
+                  ประมวลผลภายในเบราว์เซอร์ของคุณทันที ไม่มีการส่งข้อมูลทางการเงินเข้าเซิร์ฟเวอร์
+                </p>
+              </div>
+
+              <div className="flex flex-col items-center text-center p-4">
+                <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+                  <span className="material-symbols-outlined text-[28px]" aria-hidden="true">
+                    percent
+                  </span>
+                </div>
+                <h3 className="font-headline text-[18px] font-semibold text-on-surface">
+                  คำนวณส่วนลดได้ในตัว
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-on-surface-variant">
+                  หักส่วนลดทั้งแบบเปอร์เซ็นต์และบาทก่อนหารเงิน ช่วยให้คิดราคาสุทธิได้สะดวกรวดเร็ว
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
