@@ -48,6 +48,12 @@ export default function Home() {
         </div>
       </section>
 
+      {DISPLAY_ADS && (
+        <div className="mx-auto max-w-300 px-5 md:px-10">
+          <AdBanner slot="0000000000" />
+        </div>
+      )}
+
       <section id="tools" className="pb-16">
         <div className="mx-auto max-w-300 px-5 md:px-10">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
@@ -132,8 +138,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {DISPLAY_ADS && <AdBanner slot="0000000000" />}
     </div>
   );
 }

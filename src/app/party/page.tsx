@@ -37,7 +37,9 @@ export default function PartyPage() {
 
   return (
     <div className="relative pb-16">
-      <div className="mx-auto flex max-w-150 flex-col px-5 pt-12 md:pt-20">
+      <div className="mx-auto flex max-w-150 flex-col px-5 pt-6 md:pt-10">
+        {DISPLAY_ADS && <AdBanner slot="0000000000" />}
+
         <div className="text-center md:text-left">
           <h1 className="font-headline text-[28px] font-semibold text-on-surface md:text-[32px]">
             หารกัน
@@ -199,8 +201,6 @@ export default function PartyPage() {
             </div>
           </section>
         </div>
-
-        {DISPLAY_ADS && <AdBanner slot="0000000000" />}
       </div>
     </div>
   );

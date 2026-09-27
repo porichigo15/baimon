@@ -42,7 +42,9 @@ export default function ThaiHelpPage() {
   }
 
   return (
-    <div className="mx-auto max-w-150 px-5 pb-16 pt-12 md:py-16">
+    <div className="mx-auto max-w-150 px-5 pb-16 pt-6 md:pt-10">
+      {DISPLAY_ADS && <AdBanner slot="0000000000" />}
+
       <div className="text-center md:text-left">
         <h1 className="font-headline text-[28px] font-semibold text-on-surface md:text-[32px]">
           คำนวณไทยช่วยไทย 60/40
@@ -242,8 +244,6 @@ export default function ThaiHelpPage() {
           </div>
         </section>
       </div>
-
-      {DISPLAY_ADS && <AdBanner slot="0000000000" />}
     </div>
   );
 }
